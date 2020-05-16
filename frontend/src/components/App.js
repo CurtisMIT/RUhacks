@@ -9,15 +9,15 @@ import PasswordForget from './PasswordForget'
 import Home from './Home'
 import Account from './Account'
 import Admin from './Admin'
+import Header from './Header'
 import * as ROUTES from '../constants/routes'
 
 function App() {
     return (
         <Router>
             <div>
-                <Navigation />
-
-                <hr />
+                {/* <Navigation /> */}
+                <Header />
 
                 <Route exact path={ROUTES.LANDING} component={Landing} />
                 <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
