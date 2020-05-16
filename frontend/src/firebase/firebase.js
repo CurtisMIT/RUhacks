@@ -2,8 +2,7 @@ import app from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
-// CREATE ./config.js file to export your firebase configuration here.
-import config from './config';
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyCOn8CINpc1usfeZ9yh1nY5j76XViT4jm4",
