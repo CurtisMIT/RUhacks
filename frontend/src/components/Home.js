@@ -10,7 +10,7 @@ function HomeAuth({ authUser }){
     return (
         <div className="text-center">
             {
-                !!authUser.roles[ROLES.ADMIN] && (
+                !!authUser.roles[ROLES.HELPER] && (
                     <Helper />
                 )
             }
