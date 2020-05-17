@@ -68,6 +68,8 @@ class TicketsPage extends Component {
     }
 }
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.NONHELPER];
+// const condition = authUser => authUser && !!authUser.roles[ROLES.NONHELPER];
+const condition = authUser => !!authUser;
+
 
 export default withAuthorization(condition)(TicketsPage);

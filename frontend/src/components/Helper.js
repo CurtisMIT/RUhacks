@@ -57,10 +57,10 @@ function Helper(){
                     mapElement={<div style={{ height: `100%` }} />}
                 />
             </div>
-            <h1 className="display-3 mt-5">
+            <h1 className="display-3 my-5">
                 View All
             </h1>
-            <div className="container">
+            {/* <div className="container">
                 <div className="row">
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">
@@ -75,8 +75,8 @@ function Helper(){
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div> */}
+        </div> 
     );
 }
 
