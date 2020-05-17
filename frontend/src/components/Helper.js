@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { withAuthorization } from './Session';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
 import axios from 'axios';
-import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
-
 var latval = 43.6426;
 var longval = -79.3871;
 var newMarkers = [];
+var info = [];
 
 function Map() {
     return (
@@ -40,24 +39,36 @@ function fail(){
    alert("fail");
 }
 
+function deleteItem(element){
+    
+      info.splice(element);
+    
+  }
+
+
 function Helper(){
     geoLocationInit();
+    
 
     useEffect(() => {
 
         axios.get("/api/users/").then(data => {
-          console.log(data.data.arr)
+          console.log(data.dataid, data.data)
           data.data.arr.forEach(element => {
             if(element.data.location){
-                console.log(element.data.location);
+                 console.log(element.dataid);
+                 info.push(element)
+                //  info2.puch(element.dataid)
 
                 newMarkers.push(element.data.location);
           }
           });
         })
     })
-    for (var i = 0; i < newMarkers.length; i++) {
-        console.log(newMarkers[i]);
+
+
+    for (var i = 0; i < info.length; i++) {
+        console.log(info[i]);
       }
     return (
         <div className="text-center">
@@ -75,22 +86,26 @@ function Helper(){
             <h1 className="display-3 my-5">
                 View All
             </h1>
-            {/* <div className="container">
+            <div className="container">
                 <div className="row">
-                    <ul className="list-group list-group-flush">
+                    <ul className="list-group list-group-flush text-center mx-auto">
+                        {info.map(ticket => (
+                            <li className="list-group-item">
+                                <div className="row mx-auto">
+                                    Name: {ticket.data.helpme}  
+                                </div>
+                                <div className="row mx-auto my-3">
+                                    Order: {ticket.data.order}
+                                </div>
+                                <button onClick={deleteItem(ticket)} >Completed</button>
+                            </li>
+                        ))}
                         <li className="list-group-item">
-                            <div className="card" style={{width: '18rem'}}>
-                                <div className="card-header">
-                                    Featured
-                                </div>
-                                <div className="card-body">
-                                    Hello there
-                                </div>
-                            </div>
+                            
                         </li>
                     </ul>
                 </div>
-            </div> */}
+            </div>
         </div> 
     );
 }

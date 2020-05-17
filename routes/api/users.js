@@ -45,7 +45,9 @@ router.get(
           // location.push(doc.data().location);
           //arr.push("hello");
 
-          arr.push({data: doc.data()});
+          arr.push({dataid: doc.id, data: doc.data()});
+          // arr.push({dataid: doc.id});
+
         });
         res.send({arr});
       })
@@ -53,7 +55,7 @@ router.get(
         console.log('Error getting documents', err);
       });
 
-
+      
     // return res.status(200).json({ msg: "successfully retrieved data from firestore" })
     //return res.status(200).json({ msg: json})
     // arr.push("hello");
