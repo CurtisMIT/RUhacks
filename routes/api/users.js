@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// const admin = require('firebase-admin');
 var firebase = require("firebase/app");
 var app = require('firebase/app');
 require('firebase/auth');
@@ -33,21 +34,35 @@ router.get(
   '/',
   async (req, res) => {
 
-
     console.log("yo", req.body)
+    var arr = [];
 
     db.collection('tickets').get()
       .then((snapshot) => {
         snapshot.forEach((doc) => {
-          console.log(doc.id, '=>', doc.data());
+        
+          // console.log(doc.id, '=>', doc.data().location);
+          // location.push(doc.data().location);
+          //arr.push("hello");
+
+          arr.push({data: doc.data()});
         });
+        res.send({arr});
       })
       .catch((err) => {
         console.log('Error getting documents', err);
       });
 
 
-    return res.status(200).json({ msg: "successfully retrieved data from firestore" })
+    // return res.status(200).json({ msg: "successfully retrieved data from firestore" })
+    //return res.status(200).json({ msg: json})
+    // arr.push("hello");
+    // for (var i = 0; i < arr.length; i++) {
+    //   console.log(arr[i]);
+    // }
+    // return  res.end();
+
+
   }
 );
 
