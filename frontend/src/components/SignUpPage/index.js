@@ -5,9 +5,11 @@ import * as ROUTES from "../../constants/routes";
 import SignUpForm from './SignUpForm';
 
 const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm />
+  <div className="container text-center">
+    <h1 className="display-2">SignUp</h1>
+    <div className="container">
+      <SignUpForm />
+    </div>
   </div>
 );
 

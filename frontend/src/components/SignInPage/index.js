@@ -4,9 +4,11 @@ import { SignUpLink } from '../SignUpPage'
 import SignInForm from './SignInForm';
 
 const SignInPage = () => (
-    <div>
-        <h1>SignIn</h1>
-        <SignInForm />
+    <div className="container text-center">
+        <h1 className="display-2">SignIn</h1>
+        <div className="container">
+            <SignInForm />
+        </div>
         <SignUpLink />
     </div>
 )
