@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withAuthorization } from './Session';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
+import axios from 'axios';
 
 var latval = 43.6426;
 var longval = -79.3871;
@@ -37,6 +38,12 @@ function fail(){
 function Helper(){
     geoLocationInit();
 
+    useEffect(() => {
+
+        axios.get("/api/users/").then(data => {
+          console.log(data)
+        })
+    })
     return (
         <div className="text-center">
             <h1 className="display-1 mb-3">
