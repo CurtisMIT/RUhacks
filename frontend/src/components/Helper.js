@@ -57,25 +57,25 @@ function Helper() {
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-      <h1 className="display-3 mt-5">
+      <h1 className="display-3 my-5">
         View All
             </h1>
-      <div className="container">
-        <div className="row">
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <div className="card" style={{ width: '18rem' }}>
-                <div className="card-header">
-                  Featured
+      {/* <div className="container">
+                <div className="row">
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">
+                            <div className="card" style={{width: '18rem'}}>
+                                <div className="card-header">
+                                    Featured
                                 </div>
                 <div className="card-body">
                   Hello there
                                 </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> */}
     </div>
   );
 }
