@@ -3,9 +3,13 @@ import React from 'react';
 function Landing() {
     return (
         <div className="container jumbotron text-center my-3">
-            <h1 className="display-1 mx-auto mb-3">Title</h1>
+            <h1 className="display-1 mx-auto mb-3">Helpify</h1>
             <p className="lead my-5">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora quas tempore est omnis mollitia autem ab sit id inventore excepturi facere eum magni, vero cupiditate repudiandae deleniti quaerat deserunt nulla. Reiciendis neque nulla, aut ea corrupti quod odio, eius minus in aliquam veritatis facilis, voluptas aperiam repudiandae totam eligendi provident.
+                We noticed that during COVID-19 many people face many difficulties due to personal accessibility needs. In order to ensure that everyone is taken care of during these harsh times, we designed a web application that will connect volunteers to people in thier community who need help.
+            </p>
+            <hr class="my-4"></hr>
+            <p className="lead my-5">
+                With Helpify, users who are unable to go out and obtain the essentials will be able to connect with those in their community who are able to lend a helping hand. 
             </p>
             
             <a href="signup" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sign up!</a>

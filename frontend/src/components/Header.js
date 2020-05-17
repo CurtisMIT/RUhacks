@@ -12,7 +12,7 @@ const HeaderAuth = ({ authUser }) => {
     return (
         <div>
             <Navbar bg="light" expand="lg">
-            <Navbar.Brand>Wtever the name is</Navbar.Brand>
+            <Navbar.Brand>Helpify</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
