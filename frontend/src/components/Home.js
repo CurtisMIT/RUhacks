@@ -4,7 +4,7 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-map
 import { useAuthUser } from './Session'
 import * as ROLES from '../constants/roles'
 import Helper from './Helper'
-import NonHelper from './Nonhelper'
+import NonHelper from './Nonhelper/Nonhelper'
 import TicketPage from './Tickets'
 
 

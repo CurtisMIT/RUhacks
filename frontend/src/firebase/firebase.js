@@ -48,7 +48,9 @@ class Firebase {
               email: user.email,
               ...dbUser,
             });
+            console.log(dbUser)
             var parent = snapshot.data();
+            console.log(parent)
             var role = parent.roles.HELPER;
             console.log(parent.roles.HELPER)
             console.log(role)
