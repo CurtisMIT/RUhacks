@@ -36,24 +36,31 @@ function SignInForm({ history }) {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <input
-                name="email"
-                value={email}
-                onChange={onChange}
-                type="text"
-                placeholder="Email Address"
-            />
-            <input
-                name="password"
-                value={password}
-                onChange={onChange}
-                type="password"
-                placeholder="Password"
-            />
-            <button disabled={isInvalid} type="submit">
-                Sign In
-            </button>
+        <form onSubmit={onSubmit} style={{display: "inline-block"}}>
+            <div className="row my-3 mx-auto">
+                <input
+                    name="email"
+                    value={email}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Email Address"
+                />
+            </div>
+            
+            <div className="row my-3 mx-auto">
+                <input
+                    name="password"
+                    value={password}
+                    onChange={onChange}
+                    type="password"
+                    placeholder="Password"
+                />
+            </div>
+            <div className="row my3- mx-auto">
+                <button disabled={isInvalid} className="row my-3 mx-auto" type="submit">
+                    Sign In
+                </button>
+            </div>
 
             {error && <p>{error.message}</p>}
         </form>

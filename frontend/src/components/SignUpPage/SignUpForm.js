@@ -79,45 +79,69 @@ function SignUpForm({ history }) {
         username === ''
 
     return (
-        <form onSubmit={onSubmit}>
-            <input
-                name="username"
-                value={username}
-                onChange={onChange}
-                type="text"
-                placeholder="Full Name"
-            />
-            <input
-                name="email"
-                value={email}
-                onChange={onChange}
-                type="text"
-                placeholder="Email Address"
-            />
-            <input
-                name="passwordOne"
-                value={passwordOne}
-                onChange={onChange}
-                type="password"
-                placeholder="Password"
-            />
-            <input
-                name="passwordTwo"
-                value={passwordTwo}
-                onChange={onChange}
-                type="password"
-                placeholder="Confirm Password"
-            />
-            <label>
-                Helper:
+        <form onSubmit={onSubmit} style={{display: "inline-block"}}>
+            <div className="row mx-auto my-3">
                 <input
-                    name="isHelper"
-                    type="checkbox"
-                    checked={isHelper}
-                    onChange={onChangeCheckbox}
+                    name="username"
+                    value={username}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Full Name"
                 />
-            </label>
-            <button type="submit" disabled={isInvalid}>
+            </div>
+            <div className="row mx-auto my-3">
+                <input
+                    name="email"
+                    value={email}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Email Address"
+                />
+            </div>
+            <div className="row mx-auto my-3">
+                <input
+                    name="passwordOne"
+                    value={passwordOne}
+                    onChange={onChange}
+                    type="password"
+                    placeholder="Password"
+                />
+            </div>
+            <div className="row mx-auto my-3">
+                <input
+                    name="passwordTwo"
+                    value={passwordTwo}
+                    onChange={onChange}
+                    type="password"
+                    placeholder="Confirm Password"
+                />
+            </div>
+            <div className="row mx-auto my-3">
+                <label className="mx-auto">
+                    Admin:
+                    <input
+                        name="isAdmin"
+                        type="checkbox"
+                        checked={isAdmin}
+                        onChange={onChangeCheckbox}
+                        className="ml-2"
+                    />
+                </label>
+            </div>
+            <div className="row mx-auto my-3">
+                <label className="mx-auto">
+                    Helper:
+                    <input
+                        name="isHelper"
+                        type="checkbox"
+                        checked={isHelper}
+                        onChange={onChangeCheckbox}
+                        className="ml-2"
+                    />
+                </label>
+            </div>
+
+            <button className="mx-auto my-3" type="submit" disabled={isInvalid}>
                 Sign Up
             </button>
 

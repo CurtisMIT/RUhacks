@@ -3,15 +3,15 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import { useImperativeHandle } from 'react';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCOn8CINpc1usfeZ9yh1nY5j76XViT4jm4",
   authDomain: "ru-hacks-85f40.firebaseapp.com",
   databaseURL: "https://ru-hacks-85f40.firebaseio.com",
   projectId: "ru-hacks-85f40",
   storageBucket: "ru-hacks-85f40.appspot.com",
   messagingSenderId: "719594252891",
-  appId: "1:719594252891:web:074034892d1f6e41896d7e",
-  measurementId: "G-C03JHY2FFZ"
+  appId: "1:719594252891:web:01f245a1f73cb2a3896d7e",
+  measurementId: "G-0Y0178S941"
 };
 
 class Firebase {

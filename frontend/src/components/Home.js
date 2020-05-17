@@ -1,27 +1,31 @@
 import React from 'react';
 import { withAuthorization } from './Session';
-import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
+import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
+import { useAuthUser } from './Session'
+import * as ROLES from '../constants/roles'
+import Helper from './Helper'
+import NonHelper from './Nonhelper'
 
-function Map() {
+function HomeAuth({ authUser }){
     return (
-        <GoogleMap defaultZoom={10} defaultCenter={{lat: 43.6426, lng: -79.3871}}/>
-    )
-}
-
-const WrappedMap = withScriptjs(withGoogleMap(Map));
-
-
-function Home(){
-    return (
-        <div style={{ height: `100vh`, width: "100vw" }}>
-            <WrappedMap 
-                googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB6uhMDA9rSNZIe5KZpCOexHDgzaewn9LQ&AIzaSyB6uhMDA9rSNZIe5KZpCOexHDgzaewn9LQ'}
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-            />
+        <div className="text-center">
+            {
+                !!authUser.roles[ROLES.HELPER] && (
+                    <Helper />
+                )
+            }
+            {
+                !!authUser.roles[ROLES.NONHELPER] && (
+                    <NonHelper />
+                )
+            }
         </div>
     );
+}
+
+const Home = () => {
+    const authUser = useAuthUser();
+    return <div>{authUser ? <HomeAuth authUser={authUser} /> : <div></div>}</div>
 }
 
 const condition = authUser => !!authUser;
