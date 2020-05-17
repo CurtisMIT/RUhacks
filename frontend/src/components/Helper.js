@@ -86,7 +86,7 @@ function Helper(){
             <h1 className="display-3 my-5">
                 View All
             </h1>
-            <div className="container">
+            {/* <div className="container">
                 <div className="row">
                     <ul className="list-group list-group-flush text-center mx-auto">
                         {info.map(ticket => (
@@ -105,7 +105,7 @@ function Helper(){
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div> 
     );
 }
