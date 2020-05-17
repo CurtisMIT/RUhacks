@@ -11,6 +11,7 @@ const INITIAL_STATE = {
     passwordOne: '',
     passwordTwo: '',
     isAdmin: false,
+    isHelper: false,
     error: null,
 }
 
@@ -18,7 +19,7 @@ function SignUpForm({ history }) {
     const firebase = React.useContext(FirebaseContext)
 
     const [
-        { username, email, passwordOne, passwordTwo, error, isAdmin },
+        { username, email, passwordOne, passwordTwo, error, isAdmin, isHelper },
         setSignUpFormState,
     ] = React.useState(INITIAL_STATE);
 
@@ -27,6 +28,12 @@ function SignUpForm({ history }) {
 
         if(isAdmin) {
             roles[ROLES.ADMIN] = ROLES.ADMIN;
+        }
+
+        if (isHelper) {
+            roles[ROLES.HELPER] = ROLES.HELPER;
+        } else {
+            roles[ROLES.NONHELPER] = ROLES.NONHELPER;
         }
 
         firebase
@@ -107,6 +114,15 @@ function SignUpForm({ history }) {
                     name="isAdmin"
                     type="checkbox"
                     checked={isAdmin}
+                    onChange={onChangeCheckbox}
+                />
+            </label>
+            <label>
+                Helper:
+                <input
+                    name="isHelper"
+                    type="checkbox"
+                    checked={isHelper}
                     onChange={onChangeCheckbox}
                 />
             </label>
