@@ -33,9 +33,11 @@ function SignUpForm({ history }) {
         if(isHelper) {
             roles[ROLES.HELPER] = ROLES.HELPER;
         } else {
-            roles[ROLES.HELPER] = 'NONHELPER';
+            roles[ROLES.NONHELPER] = ROLES.NONHELPER;
         }
-
+        firebase.updateTicket("mike", "Mary Anne")
+        firebase.createTicket(32, 40, "I love sushi", "Lizabeth")
+        // firebase.deleteTicket("Jack")
         firebase
             .createUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
@@ -52,7 +54,6 @@ function SignUpForm({ history }) {
             .catch(error =>
                 setSignUpFormState(prev => ({ ...prev, error: error }))
             )
-
         event.preventDefault()
     }
 

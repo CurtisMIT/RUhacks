@@ -35,6 +35,44 @@ class Firebase {
 
   updatePassword = password => this.auth.currentUser.updatePassword(password);
 
+  createTicket = (latitude, longitude, descritption, helperName) => {
+      const docData = {
+      helper: "",
+      helpme: helperName,
+      latitude: latitude,
+      longitude: longitude,
+      order: descritption,
+    }
+
+    this.db.collection("tickets").doc().set(docData)
+  }
+
+  updateTicket = (needHelperName, helperName) => {
+    let ticketsRef = this.db.collection('tickets');
+    let query = ticketsRef.where('helpme', '==', needHelperName).get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+            console.log('No matching documents.');
+          return;
+        }
+        // const dbUser = snapshot.data(); 
+        console.log(snapshot)
+      snapshot.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+        let ticketRef = doc.ref;
+        ticketRef.update({helper: helperName});
+      });
+    })
+    .catch(err => {
+      console.log('Error getting documents', err);
+    });
+  }
+
+  deleteTicket = (Helper) => {
+    let ticketsRef = this.db.collection('tickets');
+    ticketsRef.where('helper', '==', Helper).delete();
+  }
+
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(user => {
       if (user) {
@@ -49,6 +87,7 @@ class Firebase {
               ...dbUser,
             });
             var parent = snapshot.data();
+            console.log(parent)
             var role = parent.roles.HELPER;
             console.log(parent.roles.HELPER)
             console.log(role)
