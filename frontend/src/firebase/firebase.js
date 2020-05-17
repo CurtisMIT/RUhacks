@@ -1,8 +1,7 @@
 import app from 'firebase/app';
-import 'firebase/database';
+import 'firebase/firestore';
 import 'firebase/auth';
-
-
+import { useImperativeHandle } from 'react';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCOn8CINpc1usfeZ9yh1nY5j76XViT4jm4",
@@ -15,12 +14,11 @@ const firebaseConfig = {
   measurementId: "G-0Y0178S941"
 };
 
-
 class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
 
-    this.db = app.database();
+    this.db = app.firestore();
     this.auth = app.auth();
   }
 
@@ -40,31 +38,43 @@ class Firebase {
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(user => {
       if (user) {
+
         this.user(user.uid)
-          .once('value')
+          .get()
           .then(snapshot => {
-            const dbUser = snapshot.val();
-
-            if (!dbUser.roles) {
-              dbUser.roles = {};
-            }
-
+            const dbUser = snapshot.data();
             next({
               uid: user.uid,
               email: user.email,
               ...dbUser,
             });
+            var parent = snapshot.data();
+            var role = parent.roles.HELPER;
+            console.log(parent.roles.HELPER)
+            console.log(role)
+            console.log(dbUser)
+            if (role == 'HELPER'){
+              console.log(user)
+              this.db.collection("helper").add({
+                email: user.email,
+                username: dbUser.username
+              });
+            } else {
+              this.db.collection("nonhelper").add({
+                email: user.email,
+                username: dbUser.username
+              });
+            }
           });
       } else {
         fallback();
       }
     });
 
-
   // *** User API ***
-  user = uid => this.db.ref(`/users/${uid}`);
+  user = uid => this.db.doc(`/users/${uid}`);
 
-  users = () => this.db.ref(`users`);
+  users = () => this.db.collection(`users`);
 }
 
 export default Firebase;

@@ -30,10 +30,10 @@ function SignUpForm({ history }) {
             roles[ROLES.ADMIN] = ROLES.ADMIN;
         }
 
-        if (isHelper) {
+        if(isHelper) {
             roles[ROLES.HELPER] = ROLES.HELPER;
         } else {
-            roles[ROLES.NONHELPER] = ROLES.NONHELPER;
+            roles[ROLES.HELPER] = 'NONHELPER';
         }
 
         firebase
