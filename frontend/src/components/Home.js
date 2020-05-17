@@ -4,14 +4,19 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-map
 import { useAuthUser } from './Session'
 import * as ROLES from '../constants/roles'
 import Helper from './Helper'
-import NonHelper from './Nonhelper/Nonhelper'
+import NonHelper from './Nonhelper'
+import TicketPage from './Tickets'
+
 
 function HomeAuth({ authUser }){
     return (
         <div className="text-center">
             {
                 !!authUser.roles[ROLES.HELPER] && (
-                    <Helper />
+                    <div>
+                        <Helper />
+                        <TicketPage />
+                    </div>    
                 )
             }
             {
