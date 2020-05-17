@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table'
 import { withAuthorization } from '../Session';
+import { useAuthUser } from './Session'
+import { FirebaseContext } from '../firebase';
 import * as ROLES from '../../constants/roles';
 
 const info = [
@@ -31,6 +33,13 @@ const info = [
 ]
 
 function TicketsPage() {
+    const authUser = useAuthUser()
+    const firebase = React.useContext(FirebaseContext)
+
+    const [
+        { tickets, helper , nonhelper, err },
+        setTicketsPageState,
+    ] = React.useState(INITIAL_STATE)
 
     const getData = () => {
         return info
@@ -38,16 +47,17 @@ function TicketsPage() {
     return (
         <Table responsive>
             <thead>
-                <tr>
+            <tr>
                 <th>Ticket #</th>
                 <th>Description</th>
-                <th>Location</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
                 <th>Helper</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    getData().map((data) => 
+                    tickets.map((data) => 
                         <tr>
                             <td>{data.id}</td>
                             <td>{data.description}</td>
