@@ -12,8 +12,9 @@ function AccountPage() {
     return (
         <div>
             <h1>Account: {authUser.email}</h1>
-            {/* <PasswordForgetForm />
-            <PasswordChangeForm /> */}
+            {/* {<PasswordForgetForm /> */}
+            {/* // <PasswordChangeForm /> */}
+            }
         </div>
     )
 }
