@@ -42,7 +42,13 @@ function TicketForm() {
     }
 
     const success = position => {
-        console.log(position)
+        const { latitude, longitude } = position.coords
+        console.log(position.coords)
+        setTicketFormState(prev => ({
+            ...prev,
+            lat: latitude,
+            long: longitude
+        }))
     }
 
     const fail = () => console.log("failed")
