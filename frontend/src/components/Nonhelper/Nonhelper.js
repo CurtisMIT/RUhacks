@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withAuthorization } from './Session';
-import * as ROLES from '../constants/roles';
+import { withAuthorization } from '../Session';
+import * as ROLES from '../../constants/roles';
 import Tickets from './Tickets'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
