@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// const admin = require('firebase-admin');
 var firebase = require("firebase/app");
 var app = require('firebase/app');
 require('firebase/auth');
@@ -48,6 +49,41 @@ router.get(
 
 
     return res.status(200).json({ msg: "successfully retrieved data from firestore" })
+  }
+);
+
+
+router.post(
+  '/ticket',
+  async (req, res) => {
+
+
+    console.log("yo", req.body)
+
+    //NEED TO extract data and put it into a JS object --> this is hardcoded for now, but can change 
+    //based on the user data
+    const user = {
+      helper: "bob",
+      helpme: "mike",
+      location: "[32° N, 40° E]",
+      order: "eggs",
+      requestedTime: firebase.firestore.Timestamp.fromDate(new Date('May 10, 2020')),
+      timeFulfilled: firebase.firestore.Timestamp.fromDate(new Date('May 18, 2020')),
+    }
+
+    db.collection('tickets').add(user)
+      .then((ref) => {
+        ref.forEach((doc) => {
+          console.log(ref);
+        });
+      })
+      .catch((err) => {
+        console.log('Error getting documents', err);
+      });
+
+    //NEEDS to return the ticket for the map creation
+
+    return res.status(200).json({ msg: "PUSHED TICKET TO FIRESTORE" })
   }
 );
 
