@@ -12,12 +12,15 @@ const HeaderAuth = ({ authUser }) => {
     return (
         <div>
             <Navbar bg="light" expand="lg">
-            <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand>Wtever the name is</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <Nav.Link>
                         <Link to={ROUTES.HOME}>Home</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <Link to={ROUTES.ACCOUNT}>Account</Link>
                     </Nav.Link>
                     {
                         !!authUser.roles[ROLES.ADMIN] && (
@@ -41,11 +44,6 @@ const HeaderNonAuth = () => {
                 <Navbar.Brand>Wtever the name is</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link>
-                            <Link to={ROUTES.HOME}>Home</Link>
-                        </Nav.Link>
-                    </Nav>
                 </Navbar.Collapse>
                 <Button variant="outline-primary" className="mr-2">
                     <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
