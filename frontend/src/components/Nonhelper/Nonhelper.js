@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../Session';
 import * as ROLES from '../../constants/roles';
 import Tickets from './Tickets'
+import TicketForm from './TicketForm'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+
 
 function NonhelperPage() {
     return (
@@ -12,6 +14,9 @@ function NonhelperPage() {
             <Row>
                 <Col>
                     <Tickets />
+                </Col>
+                <Col>
+                    <TicketForm />
                 </Col>
             </Row>
         </Container>
